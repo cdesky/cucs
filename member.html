@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CUSPEA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	</head>
+	<body>
+
+	<div class="fh5co-loader"></div>
+
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+
+		<div class="top-menu">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-1">
+						<div id="fh5co-logo"><a href="index.html">CUSPEA<span>.</span></a></div>
+					</div>
+					<div class="col-xs-11 text-right menu-1">
+						<ul>
+							<li><a href="index.html">首 页</a></li>
+							<li class="active"><a href="member.html">成员资料</a></li>
+							<li ><!--	class="has-dropdown"  -->
+								<a href="#">交流</a>
+								<ul class="dropdown" style="display: none;">
+									<li><a href="#">线上交流</a></li>
+									<li><a href="#">线下交流</a></li>
+								</ul>
+							</li>
+							<li><a href="#">项目</a></li>
+							<li class="btn-cta"><a href="#"><span>登录/注册</span></a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</nav>
+
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_3.jpg);background-position: center;height: 800px;" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>联盟成员资料</h1>
+							<!--<h2>Free html5 templates Made by <a href="http://freehtml5.co" target="_blank">freehtml5.co</a></h2>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="fh5co-blog">
+		<div class="container">
+			<div class="row rowItems">
+
+			</div>
+
+			<div id='page'></div>
+		</div>
+	</div>
+
+
+	<div class="row copyright">
+		<div class="col-md-12 text-center">
+			<p>
+				 <small class="block">© 2015-2017<a href="http://www.kapuw.net/" target="_blank" title=""> 谱咖网络</a> 技术支持</small>
+			</p>
+		</div>
+	</div>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.countTo.js"></script>
+	<script type="text/javascript">
+
+	    var xmlhttp;
+
+	    if (window.XMLHttpRequest) {
+	        xmlhttp = new XMLHttpRequest();
+	    }
+
+	    else {
+	        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+
+	    xmlhttp.open("GET", "member.xml", false);
+	    xmlhttp.send();
+	    xmlDoc=xmlhttp.responseXML;
+
+	   var nodeList1=xmlDoc.documentElement.getElementsByTagName("memberItems") // IE
+	   var nodeList2=xmlDoc.getElementsByTagName("memberItems"); // 非IE
+
+	   if(nodeList1=='')
+	   {
+		   	var str=''
+            for(var i=0;i<nodeList2.length;i++){
+                str+='<div class="col-lg-4 col-md-4">'
+                str+='<div class="fh5co-blog animate-box">'
+                str+='<div class="blog-text">'
+                str+="<h3>姓名："+(nodeList2[i].getElementsByTagName('name')[0].firstChild.text)+"</h3>"
+                str+="<span class=\"posted_on\">研究领域："+(nodeList2[i].getElementsByTagName('position')[0].firstChild.text)+"</span>"
+                str+="<span class=\"posted_on\">荣誉与身份："+(nodeList2[i].getElementsByTagName('power')[0].firstChild.text)+"</span>"
+                str+='<span class="comment">21<i class="icon-speech-bubble"></i></span>'
+                str+="<p>工作单位："+(nodeList2[i].getElementsByTagName('workPlace')[0].firstChild.text)+"</p></div></div></div>"
+            }
+        $('.rowItems').html(str)
+	   }
+
+		else
+		{
+			var str=''
+			for(var i=0;i<nodeList2.length;i++){
+				str+='<div class="col-lg-4 col-md-4">'
+				str+='<div class="fh5co-blog animate-box">'
+				str+='<div class="blog-text">'
+				str+="<h3>姓名："+(nodeList2[i].getElementsByTagName('name')[0].firstChild.nodeValue)+"</h3>"
+				str+="<span class=\"posted_on\">研究领域："+(nodeList2[i].getElementsByTagName('position')[0].firstChild.nodeValue)+"</span>"
+				str+="<span class=\"posted_on\">荣誉与身份："+(nodeList2[i].getElementsByTagName('power')[0].firstChild.nodeValue)+"</span>"
+				str+='<span class="comment">21<i class="icon-speech-bubble"></i></span>'
+				str+="<p>工作单位："+(nodeList2[i].getElementsByTagName('workPlace')[0].firstChild.nodeValue)+"</p></div></div></div>"
+			}
+		$('.rowItems').html(str)
+		}
+
+
+</script>
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+
